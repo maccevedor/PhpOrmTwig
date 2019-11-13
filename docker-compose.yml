@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+
+  apache:
+    image: php:7.3-apache
+    container_name: php
+    environment:
+        XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_enable=1
+        
+    ports:
+      - 8080:80 #Puerto Host(local) : Puerto Contenedora
+      - 3307:3306 #Puerto Host(local) : Puerto Contenedora
+    #volumes:
+      #- /var/www/html/prueba:/var/www/html/
+    tty: true  
+    networks:
+      - prueba
+    restart: always
